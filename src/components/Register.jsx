@@ -2,6 +2,7 @@ import { useState } from "react";
 
 function Register(){
     const [formData, setFormdata]=useState();
+    const [message, setMessage] = useState();
 
     const handleChange=(e)=>{
         const {name, value}= e.target;
@@ -18,9 +19,18 @@ function Register(){
             method: "POST",
             headers:{"Content-Type": "application/json"},
             body:JSON.stringify(formData) 
-        }   
-        const response = await fetch("http://localhost:5000/users", opt)
-        console.log(response);
+        }
+        try{
+            const response = await fetch("http://localhost:5000/users", opt)
+            if(response.status === 201){
+                setMessage("user created succcessfully");
+            }else{
+                setMessage("something went wrong");
+            }
+        }
+        catch(err){
+            alert("something went wrong");
+        }
     }
 
     return(
@@ -37,7 +47,7 @@ function Register(){
                 <label className="form-label">Password</label>
                 <input type="password" name="password" className="form-control" onChange={handleChange}/>
             </div>
-
+            <p className="mb-2">{message}</p>
             <button className="btn btn-primary" onClick={submitForm}>Register</button>
         </form>
     )

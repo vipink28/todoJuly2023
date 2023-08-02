@@ -30,3 +30,23 @@ function App() {
 }
 
 export default App;
+
+
+
+//request - get, put, post, patch, delete
+//endpoint - http://localhost:5000/users
+
+// {method: "GET"} - http://localhost:5000/users - will return an array of all users.
+
+// {method: "GET"} - http://localhost:5000/users/2 - will return single user matching the id.
+
+// {method: "POST"} - http://localhost:5000/users - will create a new record in database.
+
+// {method: "PUT"} - http://localhost:5000/users/2 - will update the item with new values.
+
+// {method: "PATCH"} - http://localhost:5000/users/2 - will update only the modified value.
+
+// {method: "DELETE"} - http://localhost:5000/users/2 - item will be deleted.
+
+// filter 
+// {method: "GET"} - http://localhost:5000/users?name="vipin&password="abc" - will return a new array with objects matched with filter query.

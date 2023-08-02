@@ -2,15 +2,27 @@
   "users": [
     {
       "name": "Vipin",
-      "email": "vipin@gamil.com",
+      "email": "vipin@gmail.com",
       "password": "admin",
       "id": 1
     },
     {
-      "name": "Vipin",
-      "email": "vipin@gamil.com",
+      "name": "Arun",
+      "email": "arun.gmail.com",
       "password": "admin",
       "id": 2
+    },
+    {
+      "name": "kajal",
+      "email": "kajal@yahoo.in",
+      "password": "admin",
+      "id": 3
+    },
+    {
+      "name": "Vipin",
+      "email": "vipin@gmail.com",
+      "password": "adlkjdf",
+      "id": 4
     }
   ],
   "tasks": []
