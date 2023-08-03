@@ -19,10 +19,16 @@
       "id": 3
     },
     {
-      "name": "Vipin",
-      "email": "vipin@gmail.com",
-      "password": "adlkjdf",
+      "name": "amit",
+      "email": "amit@gmail.com",
+      "password": "admin",
       "id": 4
+    },
+    {
+      "name": "saloni",
+      "email": "saloni@gmai.com",
+      "password": "admin",
+      "id": 5
     }
   ],
   "tasks": []

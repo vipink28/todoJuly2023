@@ -19,6 +19,9 @@ function Login(){
             if(response.ok){
                 const userData = await response.json();
                 if(userData.length > 0){
+
+                    localStorage.setItem("user", JSON.stringify(userData[0]));
+
                     setMessage("logged in successfully");
                 }else{
                     setMessage("Email/Password is incorrect");

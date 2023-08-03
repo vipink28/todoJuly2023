@@ -21,12 +21,25 @@ function Register(){
             body:JSON.stringify(formData) 
         }
         try{
-            const response = await fetch("http://localhost:5000/users", opt)
-            if(response.status === 201){
-                setMessage("user created succcessfully");
-            }else{
-                setMessage("something went wrong");
-            }
+            const checkUser = await fetch(`http://localhost:5000/users?email=${formData.email}`, {method: "GET"});
+
+            if(checkUser.ok){
+                const userExist = await checkUser.json();
+                if(userExist.length > 0){
+                    setMessage("User already exist, please login");
+                }else{
+                    const response = await fetch("http://localhost:5000/users", opt)
+                    if(response.status === 201){                        
+                        const user = await response.json();
+                        
+                        localStorage.setItem("user", JSON.stringify(user));
+
+                        setMessage("user created succcessfully");
+                    }else{
+                        setMessage("something went wrong");
+                    }
+                }
+            }            
         }
         catch(err){
             alert("something went wrong");

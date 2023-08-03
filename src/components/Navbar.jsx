@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
 function Navbar(props) {
+    const [user, setUser]= useState();
+
+    // use effect is used to execute something when component is loaded.
+    useEffect(()=>{
+      const localuser = localStorage.getItem("user");     
+      if(localuser){
+        let user = JSON.parse(localuser);
+        setUser(user);
+      }
+    }, [])
+
     return (
         <nav className="navbar navbar-expand-md navbar-dark bg-dark" aria-label="Fourth navbar example">
         <div className="container-fluid">
@@ -35,7 +46,7 @@ function Navbar(props) {
               </li>            
 
               <li className="nav-item dropdown">
-                <Link className="nav-link dropdown-toggle" to="#" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</Link>
+                <Link className="nav-link dropdown-toggle" to="#" data-bs-toggle="dropdown" aria-expanded="false">{user?.name}</Link>
                 <ul className="dropdown-menu">
                   <li><Link className="dropdown-item" to="#">Action</Link></li>
                   <li><Link className="dropdown-item" to="#">Another action</Link></li>
