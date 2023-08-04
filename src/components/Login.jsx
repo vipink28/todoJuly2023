@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import AuthContext from "../context/AuthContext";
 function Login(){
     const [formData, setFormdata]=useState();
-    const [message, setMessage] = useState();
+    const {login, message} = useContext(AuthContext);
 
     const handleChange=(e)=>{
         const {name, value}= e.target;
@@ -11,25 +12,9 @@ function Login(){
         }))
     }
 
-    const submitForm=async(e)=>{
+    const submitForm=(e)=>{
         e.preventDefault();
-        try {
-            const response = await fetch(`http://localhost:5000/users?email=${formData.email}&password=${formData.password}`, {method: "GET"})
-
-            if(response.ok){
-                const userData = await response.json();
-                if(userData.length > 0){
-
-                    localStorage.setItem("user", JSON.stringify(userData[0]));
-
-                    setMessage("logged in successfully");
-                }else{
-                    setMessage("Email/Password is incorrect");
-                }
-            }
-        } catch (error) {
-            console.log(error)
-        }
+        login(formData);
     }
 
     return(

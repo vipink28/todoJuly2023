@@ -29,6 +29,12 @@
       "email": "saloni@gmai.com",
       "password": "admin",
       "id": 5
+    },
+    {
+      "name": "Aman",
+      "email": "aman@gmail.com",
+      "password": "amdin",
+      "id": 6
     }
   ],
   "tasks": []

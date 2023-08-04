@@ -1,18 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
+import AuthContext from '../context/AuthContext';
 
 function Navbar(props) {
-    const [user, setUser]= useState();
-
-    // use effect is used to execute something when component is loaded.
-    useEffect(()=>{
-      const localuser = localStorage.getItem("user");     
-      if(localuser){
-        let user = JSON.parse(localuser);
-        setUser(user);
-      }
-    }, [])
+    const { user }= useContext(AuthContext);    
 
     return (
         <nav className="navbar navbar-expand-md navbar-dark bg-dark" aria-label="Fourth navbar example">
