@@ -1,11 +1,5 @@
 {
-  "users": [
-    {
-      "name": "Vipin",
-      "email": "vipin@gmail.com",
-      "password": "admin",
-      "id": 1
-    },
+  "users": [   
     {
       "name": "Arun",
       "email": "arun.gmail.com",
@@ -35,6 +29,12 @@
       "email": "aman@gmail.com",
       "password": "amdin",
       "id": 6
+    },
+    {
+      "name": "Ankit",
+      "email": "ankit@gmail.com",
+      "password": "admin",
+      "id": 7
     }
   ],
   "tasks": []

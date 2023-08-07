@@ -1,10 +1,14 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import AuthContext from "../context/AuthContext";
 
 function Register(){
     const [formData, setFormdata]=useState();
-    const {message, register} = useContext(AuthContext);
+    const {message, register, setMessage} = useContext(AuthContext);
 
+    useEffect(()=>{
+        setMessage("");
+    }, [])
+    
     const handleChange=(e)=>{
         const {name, value}= e.target;
         setFormdata((prev)=>({
