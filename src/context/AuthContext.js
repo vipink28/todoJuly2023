@@ -7,7 +7,7 @@ const AuthContext = createContext();
 export const AuthProvider=({children})=>{
 
     const [user, setUser]= useState(null);
-    const [message, setMessage] = useState();
+    const [message, setMessage] = useState("");
     const navigate = useNavigate();
 
     //register user
