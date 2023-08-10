@@ -43,5 +43,14 @@
       "id": 8
     }
   ],
-  "tasks": []
+  "tasks": [
+    {
+      "title": "Meeting",
+      "userid": 8,
+      "modifiedon": "Thu Aug 10 2023 11:54:04 GMT+0530 (India Standard Time)",
+      "description": "Meeting with client",
+      "duedate": "2023-08-18T15:58",
+      "id": 1
+    }
+  ]
 }

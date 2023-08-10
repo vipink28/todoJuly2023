@@ -12,10 +12,12 @@ import Login from './components/Login';
 import Register from './components/Register';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './auth/ProtectedRoute';
+import { TaskProvider } from './context/TaskContext';
 function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
+        <TaskProvider>
         <Navbar />
         <Routes>
           <Route path="/" element={<Navigate to="/login" />}></Route>
@@ -29,6 +31,7 @@ function App() {
           <Route path='/profile' element={<ProtectedRoute><Profile /></ProtectedRoute>}></Route>
           <Route path='*' element={<PageNotFound />}></Route>
         </Routes>
+        </TaskProvider>
       </AuthProvider>
     </BrowserRouter>
   );
