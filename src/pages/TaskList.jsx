@@ -3,6 +3,7 @@ import TaskContext from '../context/TaskContext';
 import { dateFormat } from '../helper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
+import Popup from '../components/Popup';
 
 function TaskList(props) {
     const { allTasks } = useContext(TaskContext);
@@ -29,7 +30,7 @@ function TaskList(props) {
                                     <td>{item.description}</td>
                                     <td>{dateFormat(item.duedate)}</td>
                                     <td>
-                                        <span className='px-2'>
+                                        <span className='px-2' data-bs-toggle="modal" data-bs-target="#taskmodal">
                                             <FontAwesomeIcon icon={faEye}/>
                                         </span>
                                         <span className='px-2'>
@@ -45,6 +46,7 @@ function TaskList(props) {
                     </tbody>
                 </table>
             </div>
+            <Popup type="delete"/>
         </div>
     );
 }
