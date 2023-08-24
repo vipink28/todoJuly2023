@@ -9,7 +9,7 @@ function TaskForm(props) {
         duedate: ""
     }
 
-    const { isUpdate, data, setUpdate } = props;
+    const { isUpdate, data, setUpdate, isPopup, btn } = props;
     const [formData, setFormData]= useState(formInit);
     
     const {createTask, updateTask}= useContext(TaskContext);
@@ -31,8 +31,12 @@ function TaskForm(props) {
     }
 
     const onCancel = ()=>{
-        setUpdate(false);
-        setFormData(formInit);
+        if(!isPopup){
+            setUpdate(false);
+            setFormData(formInit);
+        }else{
+            btn.current.click();
+        }        
     }
 
     const onUpdate = ()=>{
@@ -68,7 +72,10 @@ function TaskForm(props) {
                     <>
                     <button className='btn btn-primary me-2' onClick={onUpdate}>Update Task</button>
                     <button className='btn btn-warning me-2' onClick={onCancel}>Cancel</button>
-                    <button className='btn btn-success' onClick={onCancel}>Create New</button>
+                    {
+                        !isPopup ?
+                    <button className='btn btn-success' onClick={onCancel}>Create New</button>: ""
+                    }
                     </> :
                     <button className='btn btn-primary' onClick={onCreate}>Create Task</button>
                 }
