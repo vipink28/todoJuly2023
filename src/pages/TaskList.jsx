@@ -1,4 +1,4 @@
-import React, { useContext, useReducer } from 'react';
+import React, { useContext, useReducer, useState } from 'react';
 import TaskContext from '../context/TaskContext';
 import { dateFormat } from '../helper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,10 +18,22 @@ function TaskList(props) {
     const init = {type: "", data: ""};
     const { allTasks } = useContext(TaskContext);
     const [state, dispatch] = useReducer(reducer, init);
+    const [searchText, setSearchText] = useState("");
 
+    const filteredArray = allTasks?.filter((item)=>{
+        return item.title.toLowerCase().includes(searchText.toLowerCase());
+    })
+
+    const handleSearch=(e)=>{
+        const { value } = e.target;
+        setSearchText(value);
+    }
     return (
         <div className='py-5 container'>
             <div className="bg-primary p-4">
+
+                <input type="text" className='form-control' placeholder='search task' onChange={handleSearch} />
+
                 <table className='table table-dark'>
                     <thead>
                         <tr>
@@ -34,7 +46,7 @@ function TaskList(props) {
                     </thead>
                     <tbody>
                         {
-                            allTasks ? allTasks.map((item)=>{
+                            allTasks ? filteredArray.map((item)=>{
                                 return <tr key={item.id}>
                                     <td>{item.id}</td>
                                     <td>{item.title}</td>
